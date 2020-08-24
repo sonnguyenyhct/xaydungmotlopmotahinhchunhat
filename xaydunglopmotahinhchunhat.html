@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+    <br>
+    <p id="acreage"></p>
+    <p id="perimeter"></p>
+    <script>
+            let Rectangle = function (widthRectangle, heightRectangle) {
+            this.widthRectangle = widthRectangle;
+            this.heightRectangle = heightRectangle;
+
+            this.getWidthRectangle = function (){
+                return this.widthRectangle;
+            }
+            this.getHeightRectangle = function () {
+                return this.heightRectangle;
+            }
+            this.setWidthRectangle = function (widthRectangle) {
+                this.widthRectangle = widthRectangle;
+            }
+            this.setHeightRectangle = function (heightRectangle) {
+                this.heightRectangle = heightRectangle;
+            }
+
+            this.getAcreage = function() {
+                return widthRectangle*heightRectangle;
+            }
+            this.getPerimeter = function() {
+                return 2*(widthRectangle + heightRectangle);
+            }
+            this.drawRectangle = function (widthRectangle, heightRectangle) {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.moveTo(100,100);
+                ctx.lineTo(heightRectangle+100,100);
+                ctx.lineTo(heightRectangle+100,widthRectangle+100);
+                ctx.lineTo(100,widthRectangle+100);
+                ctx.lineTo(100,100);
+                ctx.stroke();
+
+            }
+        }
+            let rectangle = new Rectangle(100, 200);
+            rectangle.setHeightRectangle(150);
+            rectangle.setWidthRectangle(150);
+            let widthrec = rectangle.getWidthRectangle();
+            let heightrec = rectangle.getHeightRectangle();
+            rectangle.drawRectangle(widthrec,heightrec);
+            document.getElementById("perimeter").innerHTML = "Chu vi la : " + rectangle.getPerimeter();
+            document.getElementById("acreage").innerHTML = "Dien tich la : " + rectangle.getAcreage();
+    </script>
+</body>
+</html>
